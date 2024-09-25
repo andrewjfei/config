@@ -1,0 +1,36 @@
+[window]
+decorations = "Full"
+dimensions.columns = 90
+dimensions.lines = 28
+padding.x = 8
+padding.y = 8
+dynamic_padding = true
+option_as_alt = "Both"
+
+[font]
+normal.family = "JetBrains Mono"
+normal.style = "Regular"
+size = 12
+
+[colors]
+cursor.text = "#1d1d1d"
+cursor.cursor = "#e4e4e4"
+vi_mode_cursor.text = "#1d1d1d"
+vi_mode_cursor.cursor = "#e4e4e4"
+
+[colors.primary]
+background = "#1d1d1d"
+foreground = "#e4e4e4"
+
+[colors.normal]
+black = "#1d1d1d"
+red = "#ff7f66"
+green = "#b1bd75"
+yellow = "#ffa666"
+blue = "#75b6d7"
+magenta = "#df9fb5"
+cyan = "#8bc1b8"
+
+[cursor]
+style.shape = "Block"
+style.blinking = "Always"

@@ -31,10 +31,10 @@ cmd-minus = "resize smart -50"
 cmd-equal = "resize smart +50"
 
 # fullscreen current window
-cmd-f = "fullscreen"
+cmd-shift-f = "fullscreen"
 
 # close current window
-cmd-q = "close"
+cmd-shift-q = "close"
 
 # workspaces
 cmd-1 = "workspace 1"
@@ -63,4 +63,4 @@ cmd-shift-0 = "move-node-to-workspace 10"
 cmd-shift-r = "reload-config"
 
 # move workspace to next monitor
-cmd-m = "move-workspace-to-monitor --wrap-around next"
+cmd-shift-m = "move-workspace-to-monitor --wrap-around next"
