@@ -105,7 +105,6 @@ return {
 
             -- define and configure the language servers that will be used used by mason-lspconfig
             local language_servers = {
-                csharp_ls = {},
                 lua_ls = {
                     settings = {
                         Lua = {
@@ -131,6 +130,7 @@ return {
             local lspconfig = require("lspconfig")
             require("mason-lspconfig").setup({
                 ensure_installed = ensure_installed,
+                automatic_installation = false,
                 handlers = {
                     function(name)
                         local language_server = language_servers[name] or {}

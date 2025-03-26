@@ -1,66 +1,87 @@
-# start aerospace after login
+# start aerospace on login
 start-at-login = true
 
-# normalisation
-enable-normalization-flatten-containers = true
-enable-normalization-opposite-orientation-for-nested-containers = true
+# commands to run after login
+# "start-at-login" must be true
+after-login-command = []
 
-[gaps]
-inner.horizontal = 8
-inner.vertical = 8
-outer.left = 8
-outer.bottom = 8
-outer.top = 8
-outer.right = 8
+# commands to run after aerospace has started up
+after-startup-command = []
+
+# normalisation
+enable-normalization-flatten-containers = false 
+enable-normalization-opposite-orientation-for-nested-containers = false
+
+# ensure mouse follows focused monitor
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+[gaps] 
+    # gaps between device screen and windows
+    outer.left = 8
+    outer.bottom = 8
+    outer.top = 8
+    outer.right = 8
+
+    # gaps between windows
+    inner.horizontal = 8
+    inner.vertical = 8
 
 [mode.main.binding]
-# change window focus
-cmd-h = "focus left"
-cmd-j = "focus down"
-cmd-k = "focus up"
-cmd-l = "focus right"
+    # command to start iterm
+    cmd-enter = 'exec-and-forget open -a iterm'
 
-# move focused window
-cmd-shift-h = "move left"
-cmd-shift-j = "move down"
-cmd-shift-k = "move up"
-cmd-shift-l = "move right"
+    # change window focus in direction
+    cmd-h = 'focus --boundaries-action wrap-around-the-workspace left'
+    cmd-j = 'focus --boundaries-action wrap-around-the-workspace down'
+    cmd-k = 'focus --boundaries-action wrap-around-the-workspace up'
+    cmd-l = 'focus --boundaries-action wrap-around-the-workspace right'
 
-# resize window
-cmd-minus = "resize smart -50"
-cmd-equal = "resize smart +50"
+    # move focused window in direction
+    cmd-shift-h = 'move left'
+    cmd-shift-j = 'move down'
+    cmd-shift-k = 'move up'
+    cmd-shift-l = 'move right'
+    
+    # split direction
+    cmd-shift-s = 'split horizontal'
+    cmd-s = 'split vertical'
 
-# fullscreen current window
-cmd-shift-f = "fullscreen"
+    # resize focused window
+    cmd-u = 'resize width -50'
+    cmd-o = 'resize height +50'
+    cmd-i = 'resize height -50'
+    cmd-p = 'resize width +50'
 
-# close current window
-cmd-shift-q = "close"
+    # full screen focused window
+    cmd-shift-f = 'fullscreen'
 
-# workspaces
-cmd-1 = "workspace 1"
-cmd-2 = "workspace 2"
-cmd-3 = "workspace 3"
-cmd-4 = "workspace 4"
-cmd-5 = "workspace 5"
-cmd-6 = "workspace 6"
-cmd-7 = "workspace 7"
-cmd-8 = "workspace 8"
-cmd-9 = "workspace 9"
-cmd-0 = "workspace 10"
+    # close focused window
+    cmd-shift-q = "close"
 
-cmd-shift-1 = "move-node-to-workspace 1"
-cmd-shift-2 = "move-node-to-workspace 2"
-cmd-shift-3 = "move-node-to-workspace 3"
-cmd-shift-4 = "move-node-to-workspace 4"
-cmd-shift-5 = "move-node-to-workspace 5"
-cmd-shift-6 = "move-node-to-workspace 6"
-cmd-shift-7 = "move-node-to-workspace 7"
-cmd-shift-8 = "move-node-to-workspace 8"
-cmd-shift-9 = "move-node-to-workspace 9"
-cmd-shift-0 = "move-node-to-workspace 10"
+    # workspaces
+    cmd-1 = 'workspace 1'
+    cmd-2 = 'workspace 2'
+    cmd-3 = 'workspace 3'
+    cmd-4 = 'workspace 4'
+    cmd-5 = 'workspace 5'
+    cmd-6 = 'workspace 6'
+    cmd-7 = 'workspace 7'
+    cmd-8 = 'workspace 8'
+    cmd-9 = 'workspace 9'
 
-# reload config
-cmd-shift-r = "reload-config"
+    cmd-shift-1 = 'move-node-to-workspace 1'
+    cmd-shift-2 = 'move-node-to-workspace 2'
+    cmd-shift-3 = 'move-node-to-workspace 3'
+    cmd-shift-4 = 'move-node-to-workspace 4'
+    cmd-shift-5 = 'move-node-to-workspace 5'
+    cmd-shift-6 = 'move-node-to-workspace 6'
+    cmd-shift-7 = 'move-node-to-workspace 7'
+    cmd-shift-8 = 'move-node-to-workspace 8'
+    cmd-shift-9 = 'move-node-to-workspace 9'
 
-# move workspace to next monitor
-cmd-shift-m = "move-workspace-to-monitor --wrap-around next"
+    # reload config
+    cmd-shift-r = 'reload-config'
+
+    # move workspace to next monitor
+    cmd-shift-m = "move-workspace-to-monitor --wrap-around next"
+
