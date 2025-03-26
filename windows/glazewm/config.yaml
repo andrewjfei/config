@@ -1,0 +1,225 @@
+general:
+  # commands to run after glazewm startup
+  startup_commands: []
+
+  # commands to run just before glazewm shutdown
+  shutdown_commands: []
+
+  # commands to run after glazewm config is loaded
+  config_reload_commands: []
+
+  # focus window under cursor
+  focus_follows_cursor: false
+
+  cursor_jump:
+    # automatically move the cursor on the specified trigger
+    enabled: true
+
+    # move cursor to focused monitor
+    trigger: 'monitor_focus'
+
+  # how windows should be hidden ("cloak" | "hide")
+  hide_method: 'cloak'
+
+  # do not show hidden windows in taskbar
+  show_all_in_taskbar: false
+
+gaps:
+  # scale the gaps respective to monitor dpi
+  scale_with_dpi: true
+
+  # gap between windows
+  inner_gap: '20px'
+
+  # gap between screen border and windows
+  outer_gap:
+    top: '20px'
+    right: '20px'
+    bottom: '20px'
+    left: '20px'
+
+window_effects:
+  # visual effects to apply to the focused window
+  focused_window:
+    # highlight the window with a colored border
+    border:
+      enabled: true
+      color: '#ffa666'
+
+    # remove the title bar from the window
+    hide_title_bar:
+      enabled: false
+
+    # change the corner style of the window
+    corner_style:
+      enabled: true
+      # "square" | "rounded" | "small_rounded"
+      style: 'square'
+
+    # change the transparency of the window
+    transparency:
+      enabled: false
+      opacity: '95%'
+
+  # visual effects to apply to non-focused windows
+  other_windows:
+    border:
+      enabled: false
+      color: '#606060'
+    hide_title_bar:
+      enabled: false
+    corner_style:
+      enabled: true
+      style: 'square'
+    transparency:
+      enabled: false
+      opacity: '0%'
+
+window_behavior:
+  # new windows are created in this state
+  # "tiling" | "floating"
+  initial_state: 'tiling'
+
+  # default options for when a new window is created
+  state_defaults:
+    floating:
+      # center floating windows by default
+      centered: true
+
+      # show floating windows as always on top
+      shown_on_top: false
+
+    fullscreen:
+      # maximise the window if possible
+      maximized: false
+
+      # show fullscreen windows as always on top
+      shown_on_top: false
+
+workspaces:
+  - name: '1'
+  - name: '2'
+  - name: '3'
+  - name: '4'
+  - name: '5'
+  - name: '6'
+  - name: '7'
+  - name: '8'
+  - name: '9'
+
+window_rules:
+  - commands: ['ignore']
+    match:
+      # ignore any zebar windows
+      - window_process: { equals: 'zebar' }
+
+      # ignore picture-in-picture windows for browsers
+      - window_title: { regex: '[Pp]icture.in.[Pp]icture' }
+        window_class: { regex: 'Chrome_WidgetWin_1|MozillaDialogClass' }
+
+      # ignore rules for various third-party apps
+      - window_process: { equals: 'PowerToys' }
+        window_class: { regex: 'HwndWrapper\[PowerToys\.PowerAccent.*?\]' }
+      - window_process: { equals: 'PowerToys' }
+        window_title: { regex: '.*? - Peek' }
+      - window_process: { equals: 'Lively' }
+        window_class: { regex: 'HwndWrapper' }
+
+keybindings:
+  # shift window focus
+  - commands: ['focus --direction left']
+    bindings: ['alt+h', 'alt+left']
+  - commands: ['focus --direction right']
+    bindings: ['alt+l', 'alt+right']
+  - commands: ['focus --direction up']
+    bindings: ['alt+k', 'alt+up']
+  - commands: ['focus --direction down']
+    bindings: ['alt+j', 'alt+down']
+
+  # move window
+  - commands: ['move --direction left']
+    bindings: ['alt+shift+h', 'alt+shift+left']
+  - commands: ['move --direction right']
+    bindings: ['alt+shift+l', 'alt+shift+right']
+  - commands: ['move --direction up']
+    bindings: ['alt+shift+k', 'alt+shift+up']
+  - commands: ['move --direction down']
+    bindings: ['alt+shift+j', 'alt+shift+down']
+
+  # resize focused window
+  - commands: ['resize --width -2%']
+    bindings: ['alt+u']
+  - commands: ['resize --width +2%']
+    bindings: ['alt+p']
+  - commands: ['resize --height +2%']
+    bindings: ['alt+o']
+  - commands: ['resize --height -2%']
+    bindings: ['alt+i']
+
+  # change tiling direction
+  - commands: ['toggle-tiling-direction']
+    bindings: ['alt+s']
+
+  # change the focused window to be fullscreen
+  - commands: ['toggle-fullscreen']
+    bindings: ['alt+ctrl+f']
+
+  # minimize focused window
+  - commands: ['toggle-minimized']
+    bindings: ['alt+m']
+
+  # close focused window
+  - commands: ['close']
+    bindings: ['alt+shift+q']
+
+  # Kill GlazeWM process safely.
+  - commands: ['wm-exit']
+    bindings: ['alt+shift+e']
+
+  # reload configuration file
+  - commands: ['wm-reload-config']
+    bindings: ['alt+shift+r']
+
+  # command to launch terminal (i.e. wt, cmd, etc.)
+  - commands: ['shell-exec wt']
+    bindings: ['alt+enter']
+
+  # change focus to a different workspace
+  - commands: ['focus --workspace 1']
+    bindings: ['alt+1']
+  - commands: ['focus --workspace 2']
+    bindings: ['alt+2']
+  - commands: ['focus --workspace 3']
+    bindings: ['alt+3']
+  - commands: ['focus --workspace 4']
+    bindings: ['alt+4']
+  - commands: ['focus --workspace 5']
+    bindings: ['alt+5']
+  - commands: ['focus --workspace 6']
+    bindings: ['alt+6']
+  - commands: ['focus --workspace 7']
+    bindings: ['alt+7']
+  - commands: ['focus --workspace 8']
+    bindings: ['alt+8']
+  - commands: ['focus --workspace 9']
+    bindings: ['alt+9']
+
+  # move focused window to another workspace
+  - commands: ['move --workspace 1', 'focus --workspace 1']
+    bindings: ['alt+shift+1']
+  - commands: ['move --workspace 2', 'focus --workspace 2']
+    bindings: ['alt+shift+2']
+  - commands: ['move --workspace 3', 'focus --workspace 3']
+    bindings: ['alt+shift+3']
+  - commands: ['move --workspace 4', 'focus --workspace 4']
+    bindings: ['alt+shift+4']
+  - commands: ['move --workspace 5', 'focus --workspace 5']
+    bindings: ['alt+shift+5']
+  - commands: ['move --workspace 6', 'focus --workspace 6']
+    bindings: ['alt+shift+6']
+  - commands: ['move --workspace 7', 'focus --workspace 7']
+    bindings: ['alt+shift+7']
+  - commands: ['move --workspace 8', 'focus --workspace 8']
+    bindings: ['alt+shift+8']
+  - commands: ['move --workspace 9', 'focus --workspace 9']
+    bindings: ['alt+shift+9']
